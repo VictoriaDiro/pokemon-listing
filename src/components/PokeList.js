@@ -3,18 +3,23 @@ import PokeCard from './PokeCard';
 
 class PokeList extends React.Component {
   render() {
-    const { pokeData, value } = this.props
+    const { pokeList, pokeNameFilter } = this.props
+
     return (
       <div className="pokelist__container">
         <ul className="pokelist__list">
-          {pokeData
-            .filter(item => item.pokemon.name.includes(value))
-            .map((item, index) =>
-            <li className="poke__item" key={index}>
+          {pokeList
+            .filter(item => item.name.toLowerCase().includes(pokeNameFilter.toLowerCase()),
+            )
+            .map((item, index) => {
+              return (
+                <li className="poke__item" key={index}>
               <PokeCard
                 item = {item}
               />
-            </li>)
+            </li>
+              )
+            })
           }
         </ul>
       </div>

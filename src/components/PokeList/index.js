@@ -1,5 +1,6 @@
 import React from 'react';
-import PokeCard from './PokeCard';
+import PokeCard from '../PokeCard/index';
+import './styles.scss';
 
 class PokeList extends React.Component {
   render() {

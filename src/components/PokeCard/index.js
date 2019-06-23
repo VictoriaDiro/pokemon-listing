@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles.scss';
 
 class PokeCard extends React.Component {
   render() {
@@ -11,16 +12,18 @@ class PokeCard extends React.Component {
 
         <div className="poke__image-container">
           <img src={item.sprites.front_default} alt={item.name} className="poke__image"/>
-          <p className="poke__number">{item.number}</p>
+          <p className="poke__number">ID / {item.id}</p>
         </div>
 
         <div className="poke__info-container">
           <h2 className="poke__name">{item.name}</h2>
-          <ul className="poke__types">
-            {item.types.map((type, index) => (
-              <li className="poketype__item" key={index}>{type.type.name}</li> 
-            ))}
-          </ul>
+          <div className="poke__types-container">
+            <ul className="poke__types">
+              {item.types.map((type, index) => (
+                <li className="poketype__item" key={index}>{type.type.name}</li> 
+              ))}
+            </ul>
+          </div>
         </div>
         
       </div>

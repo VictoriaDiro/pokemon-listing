@@ -1,9 +1,9 @@
 import React from 'react';
-import fetchPokeList from '../src/services/PokeServer';
-import PokeList from './components/PokeList';
-import PokeSeach from './components/PokeSearch';
-import './App.css';
-import pokelogo from './img/pokelogo.png';
+import fetchPokeList from '../../services/PokeServer';
+import PokeList from '../PokeList/index';
+import PokeSeach from '../PokeSearch/index';
+import './App.scss';
+import pokelogo from '../../img/pokelogo.png';
 
 class App extends React.Component {
 
@@ -78,7 +78,7 @@ console.log(pokeData)
         )}
 
           <footer className="footer__container">
-            <p className="footer__text">Made with love by Victoria Diro with HTML, CSS, ReactJs</p>
+            <p className="footer__text">Made with <i class="fas fa-heart"></i> by Victoria Diro with HTML, CSS, ReactJs</p>
           </footer>
       </div>
     );

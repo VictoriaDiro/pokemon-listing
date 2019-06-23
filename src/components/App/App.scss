@@ -1,0 +1,28 @@
+body {
+  background-color: #ffe62c;
+}
+
+.header__container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.pokelogo {
+  height: 100px;
+}
+
+.main__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footer__container {
+  display: flex;
+  justify-content: center;
+}
+
+.fa-heart {
+  color: rgb(255, 0, 0);
+}

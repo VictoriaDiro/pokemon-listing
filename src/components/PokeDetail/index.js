@@ -1,10 +1,8 @@
 import React from 'react';
-// import PokeDetail from '../PokeDetail/index';
-import './styles.scss';
 
-class PokeCard extends React.Component {
+class PokeDetail extends React.Component {
   render() {
-    const { item } = this.props
+    const { item, match } = this.props
 
     return (
       <div className="poke__item">
@@ -19,17 +17,21 @@ class PokeCard extends React.Component {
           <div className="poke__types-container">
             <ul className="poke__types">
               {item.types.map((type, index) => (
-                <li className="poketype__item" key={index}>{type.type.name}</li>
+                <li className="poketype__item" key={index}>{type.type.name}</li> 
               ))}
             </ul>
+            <h3 className="poke__height">{item.name}</h3>
+            <h3 className="poke__weight">{item.name}</h3>
+            <h3 className="poke__habilities">{item.name}</h3>
+            <h3 className="poke__images">{item.name}</h3>
+            <h3 className="poke__evolution">{item.name}</h3>
           </div>
+          {this.props.match.params.id}
         </div>
-        {/* <PokeDetail
-          item = {item}
-        /> */}
+        
       </div>
     )
   }
 }
 
-export default PokeCard;
+export default PokeDetail;

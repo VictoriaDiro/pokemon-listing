@@ -1,7 +1,10 @@
 import React from 'react';
 import fetchPokeList from '../../services/PokeServer';
+// import { Switch, Route, Link } from 'react-router-dom';
 import PokeList from '../PokeList/index';
 import PokeSeach from '../PokeSearch/index';
+// import PokeCard from '../PokeCard/index';
+// import PokeDetail from '../PokeDetail/index';
 import './App.scss';
 import pokelogo from '../../img/pokelogo.png';
 
@@ -35,7 +38,7 @@ class App extends React.Component {
                 };
               });
             }).then(()=> {
-              if(this.state.pokeData.length == 25){
+              if(this.state.pokeData.length === 25){
                 this.setState({isLoading: false})
               }
             })
@@ -53,13 +56,13 @@ class App extends React.Component {
   }
 
   render() {
-    const { pokeData, pokeNameFilter, isLoading } = this.state;
-console.log(pokeData)
+    const { pokeData, pokeNameFilter, isLoading, } = this.state;
+
     return (
       <div className="app__container">
 
         <header className="header__container">
-          <img src={pokelogo} alt="pokelogo" className="pokelogo"/>
+            <img src={pokelogo} alt="pokelogo" className="pokelogo"/>
         </header>
 
         {isLoading ? (
@@ -74,11 +77,25 @@ console.log(pokeData)
               pokeNameFilter = {pokeNameFilter}
               handleChangeFilter = {this.handleChangeFilter}
             />
+
+            {/* <Link to="pokedetail">Ir a detalle</Link> */}
+
+            {/* <Switch>
+              <Route
+                path='/pokedetail/:id'
+                component = {PokeDetail}
+                render = {props => (
+                  <PokeCard
+                    match = {props.match}
+                  />
+                )} />
+            </Switch> */}
+
           </main>
         )}
 
           <footer className="footer__container">
-            <p className="footer__text">Made with <i class="fas fa-heart"></i> by Victoria Diro with HTML, CSS, ReactJs</p>
+            <p className="footer__text">Made with <i className="fas fa-heart"></i> by Victoria Diro with HTML, CSS, ReactJs</p>
           </footer>
       </div>
     );

@@ -14,10 +14,10 @@ class PokeList extends React.Component {
             .map((item, index) => {
               return (
                 <li className="poke__item" key={index}>
-              <PokeCard
-                item = {item}
-              />
-            </li>
+                  <PokeCard
+                    item = {item}
+                  />
+                </li>
               )
             })
           }

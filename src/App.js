@@ -25,38 +25,36 @@ class App extends React.Component {
   getPokeFetch () {
     fetchPokeList()
       .then(data => {
-        const { results } = data;
-        results.map(item => {
-
-          return fetch(item.url)
-            .then(res => res.json())
-            .then(pokeList => {
-
-              console.log(pokeList)
-              
+        data.results.forEach(item => {
+          fetchPokeList(item.url)
+            .then(pokemon => {
               this.setState(state => {
                 return {
-                  list: [...state.list.sort((a, b) => a.id - b.id), pokeList],
-                  isLoading: false
-                  
+                  pokeData: [...this.state.pokeData.sort((a, b) => a.id - b.id), pokemon],
+                  isLoading: true
                 };
               });
-            });
-        });
-      });
+            }).then(()=> {
+              if(this.state.pokeData.length == 25){
+                this.setState({isLoading: false})
+              }
+            })
+        })
+        
+      })
     }
 
-handleChangeFilter(event) {
-  const currentValue = event.currentTarget.value;
+  handleChangeFilter(event) {
+    const currentValue = event.currentTarget.value;
 
-  this.setState({
-    pokeNameFilter: currentValue
-  });
-}
+    this.setState({
+      pokeNameFilter: currentValue
+    });
+  }
 
   render() {
-    const { list, pokeList, isLoading } = this.state;
-
+    const { pokeData, pokeNameFilter, isLoading } = this.state;
+console.log(pokeData)
     return (
       <div className="app__container">
 
@@ -72,10 +70,9 @@ handleChangeFilter(event) {
               handleChangeFilter = {this.handleChangeFilter}
             />
             <PokeList
-              list = {list}
-              pokeList = {pokeList}
+              pokeData = {pokeData}
+              pokeNameFilter = {pokeNameFilter}
               handleChangeFilter = {this.handleChangeFilter}
-              pokeNameFilter = {this.pokeNameFilter}
             />
           </main>
         )}

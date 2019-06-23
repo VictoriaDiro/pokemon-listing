@@ -5,12 +5,11 @@ class PokeSearch extends React.Component {
     const { pokeFilter, handleChangeFilter } = this.props;
     return (
       <div className="pokesearch__container">
-        <label htmlFor="input__pokeserach" className="pokesearch__label">Busca tu pokémon</label>
         <input
           id="input__pokeserach"
           className="input__pokeserach"
           type="text"
-          placeholder="Pikachu"
+          placeholder="Filtra pokemons por nombre..."
           value = {pokeFilter}
           onChange = {handleChangeFilter}
         />

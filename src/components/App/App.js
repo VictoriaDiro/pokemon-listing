@@ -1,10 +1,9 @@
 import React from 'react';
 import fetchPokeList from '../../services/PokeServer';
-// import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import PokeList from '../PokeList/index';
 import PokeSeach from '../PokeSearch/index';
-// import PokeCard from '../PokeCard/index';
-// import PokeDetail from '../PokeDetail/index';
+import PokeDetail from '../PokeDetail/index';
 import './App.scss';
 import pokelogo from '../../img/pokelogo.png';
 
@@ -43,7 +42,6 @@ class App extends React.Component {
               }
             })
         })
-        
       })
     }
 
@@ -56,13 +54,13 @@ class App extends React.Component {
   }
 
   render() {
-    const { pokeData, pokeNameFilter, isLoading, } = this.state;
-
+    const { pokeData, pokeNameFilter, isLoading } = this.state;
+    
     return (
       <div className="app__container">
 
         <header className="header__container">
-            <img src={pokelogo} alt="pokelogo" className="pokelogo"/>
+          <img src={pokelogo} alt="pokelogo" className="pokelogo"/>
         </header>
 
         {isLoading ? (
@@ -72,28 +70,33 @@ class App extends React.Component {
             <PokeSeach
               handleChangeFilter = {this.handleChangeFilter}
             />
-            <PokeList
-              pokeData = {pokeData}
-              pokeNameFilter = {pokeNameFilter}
-              handleChangeFilter = {this.handleChangeFilter}
-            />
 
-            {/* <Link to="pokedetail">Ir a detalle</Link> */}
-
-            {/* <Switch>
+            <Switch>
+              <Route
+                exact
+                path ="/"
+                render={(routeProps) => (
+                  <PokeList {...routeProps}
+                  pokeData = {pokeData}
+                  pokeNameFilter = {pokeNameFilter}
+                  handleChangeFilter = {this.handleChangeFilter}
+                  />
+                )}
+                />
               <Route
                 path='/pokedetail/:id'
                 component = {PokeDetail}
                 render = {props => (
-                  <PokeCard
+                  <PokeDetail
                     match = {props.match}
+                    pokeData = {pokeData}
                   />
                 )} />
-            </Switch> */}
+            </Switch>
 
           </main>
         )}
-
+{console.log(pokeData)}
           <footer className="footer__container">
             <p className="footer__text">Made with <i className="fas fa-heart"></i> by Victoria Diro with HTML, CSS, ReactJs</p>
           </footer>

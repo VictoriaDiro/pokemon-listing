@@ -1,5 +1,5 @@
 import React from 'react';
-// import PokeDetail from '../PokeDetail/index';
+import { Link } from 'react-router-dom';
 import './styles.scss';
 
 class PokeCard extends React.Component {
@@ -24,9 +24,7 @@ class PokeCard extends React.Component {
             </ul>
           </div>
         </div>
-        {/* <PokeDetail
-          item = {item}
-        /> */}
+        <Link to={`pokedetail/${item.id}`}>Ir a detalle</Link>
       </div>
     )
   }

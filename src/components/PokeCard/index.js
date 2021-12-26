@@ -7,7 +7,7 @@ class PokeCard extends React.Component {
     const { item } = this.props
 
     return (
-      <div className="poke__item">
+      <div className="poke__item-container">
 
         <div className="poke__image-container">
           <img src={item.sprites.front_default} alt={item.name} className="poke__image"/>
@@ -22,9 +22,9 @@ class PokeCard extends React.Component {
                 <li className="poketype__item" key={index}>{type.type.name}</li>
               ))}
             </ul>
+            <Link to={`pokedetail/${item.id}`} className="text__detail">Ir a detalle</Link>
           </div>
         </div>
-        <Link to={`pokedetail/${item.id}`}>Ir a detalle</Link>
       </div>
     )
   }

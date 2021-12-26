@@ -54,8 +54,8 @@ class App extends React.Component {
   }
 
   render() {
-    const { pokeData, pokeNameFilter, isLoading } = this.state;
-    
+    const { pokeNameFilter, isLoading } = this.state;
+
     return (
       <div className="app__container">
 
@@ -77,26 +77,23 @@ class App extends React.Component {
                 path ="/"
                 render={(routeProps) => (
                   <PokeList {...routeProps}
-                  pokeData = {pokeData}
+                  pokeData = {this.state.pokeData}
                   pokeNameFilter = {pokeNameFilter}
-                  handleChangeFilter = {this.handleChangeFilter}
+                  //handleChangeFilter = {this.handleChangeFilter}
                   />
                 )}
                 />
               <Route
                 path='/pokedetail/:id'
-                component = {PokeDetail}
                 render = {props => (
                   <PokeDetail
                     match = {props.match}
-                    pokeData = {pokeData}
+                    pokeData = {this.state.pokeData}
                   />
                 )} />
             </Switch>
-
           </main>
         )}
-{console.log(pokeData)}
           <footer className="footer__container">
             <p className="footer__text">Made with <i className="fas fa-heart"></i> by Victoria Diro with HTML, CSS, ReactJs</p>
           </footer>

@@ -1,4 +1,14 @@
 .pokelist__list {
   display: flex;
   flex-wrap: wrap;
+  .poke__item {
+    margin: 0px 20px 10px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    box-shadow: 10px 10px 22px -4px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+  }
 }
